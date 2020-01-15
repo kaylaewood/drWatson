@@ -40,7 +40,6 @@ export class ChatBox extends Component {
   }
 
   render() {
-    const { message } = this.state;
     const { messages, errorMsg } = this.props;
     const survey = messages.map((message, i) => {
       return <Message
@@ -58,7 +57,7 @@ export class ChatBox extends Component {
         <section className="messenger">
           <input
             placeholder='Chat with Survey Bot here...'
-            value={message}
+            value={this.state.message}
             onChange={this.handleChange}
             onKeyPress={this.handleSubmit}
           />
@@ -75,7 +74,7 @@ export const mapStateToProps = state => ({
 })
 
 export const mapDispatchToProps = dispatch => ({
-  addMessage: message => dispatch(addMessage(message)),
+  addMessage: (message, isUser) => dispatch(addMessage(message, isUser)),
   hasErrored: errorMsg => dispatch(hasErrored(errorMsg))
 })
 

@@ -83,7 +83,7 @@ export class WelcomeModal extends Component {
 }
 
 export const mapDispatchToProps = dispatch => ({
-  addMessage: message => dispatch(addMessage(message)),
+  addMessage: (message, isUser) => dispatch(addMessage(message, isUser)),
   createUser: user => dispatch(createUser(user)),
   hasErrored: errorMsg => dispatch(hasErrored(errorMsg))
 })
