@@ -52,6 +52,57 @@ describe('startConversation', () => {
   });
 });
 
+describe('postMessage', () => {
+
+  beforeEach(() => {
+    window.fetch = jest.fn().mockImplementation(() => {
+      return Promise.resolve({
+        ok: true,
+        json: () => Promise.resolve({message: 'Hello'})
+      });
+    });
+  });
+
+  it('should call fetch with the correct url', () => {
+    const url = 'https://drwatson-api.herokuapp.com/api/message';
+    const information = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(
+        { "newMessage": 'This is the message' }
+      )
+    }
+
+    postMessage();
+
+    expect(window.fetch).toHaveBeenCalledWith(url, information);
+  });
+
+  it('should resolve with no errors', () => {
+    expect(postMessage()).resolves.toEqual({message: 'Hello'})
+  });
+
+  it('should return an error (SAD)', () => {
+    window.fetch = jest.fn().mockImplementation(() => {
+      return Promise.resolve({
+        ok: false
+      });
+    });
+
+    expect(postMessage()).rejects.toEqual(Error('Dr Watson is currently down.  Please try again later.'));
+  });
+
+  it('should return an error if promise rejects (SAD)', () => {
+    window.fetch = jest.fn().mockImplementation(() => {
+      return Promise.reject(Error('Dr Watson is currently down.  Please try again later.'));
+    });
+
+    expect(postMessage()).rejects.toEqual(Error('Dr Watson is currently down.  Please try again later.'));
+  });
+});
+
 describe('endConversation', () => {
 
   beforeEach(() => {
