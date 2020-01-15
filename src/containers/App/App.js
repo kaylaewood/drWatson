@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
 import Header from '../Header/Header';
 import WelcomeModal from '../WelcomeModal/WelcomeModal';
 import ChatBox from '../ChatBox/ChatBox';
@@ -33,7 +32,7 @@ export class App extends Component {
       <div className="App">
         <Header signOut={this.signOut} />
         {!user && <WelcomeModal />}
-        {user && <ChatBox addMessage={this.props.addMessage} messages={messages} />}
+        {user && <ChatBox />}
       </div>
     );
   }
@@ -44,7 +43,6 @@ export const mapStateToProps = ({ user }) => ({
 });
 
 export const mapDispatchToProps = dispatch => ({
-  addMessage: message => dispatch(addMessage(message)),
   clearMessages: () => dispatch(clearMessages()),
   removeUser: () => dispatch(removeUser()),
   hasErrored: errorMsg => dispatch(hasErrored(errorMsg))
