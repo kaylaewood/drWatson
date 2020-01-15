@@ -68,6 +68,20 @@ describe('ChatBox component', () => {
     expect(wrapper.instance().messageChatBot).toHaveBeenCalled();
   });
 
+  it('should not update state if enter key is not clicked', () => {
+    wrapper = mount(<ChatBox
+      addMessage={mockAddMessage}
+      messages={mockMessages}
+      hasErrored={mockHasErrored}
+    />);
+    wrapper.instance().messageChatBot = jest.fn();
+
+    wrapper.setState({ message: 'Hello world' });
+    wrapper.instance().handleSubmit({ key: 'Space' });
+
+    expect(wrapper.state('message')).toEqual('Hello world');
+  })
+
   it('should call addMessage, messageChatBot, and clear state when calling handleSubmit clicking the button', () => {
     wrapper = mount(<ChatBox
       addMessage={mockAddMessage}
