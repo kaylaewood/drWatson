@@ -28,7 +28,13 @@ export const postMessage = async newMessage => {
       { "newMessage": 'This is the message' }
     )
   })
-  .then(response => response.json())
+  .then(response => {
+    if (!response.ok) {
+      throw Error('Dr Watson is currently down.  Please try again later.')
+    } else {
+      return response.json()
+    }
+  })
 }
 
 export const endConversation = async () => {
