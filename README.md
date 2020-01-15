@@ -26,19 +26,19 @@ Currently there is no verification to make sure that a user has filled out all o
 
 ### Iteration 2
 
-Currently messages are being stored in local state in the `App` component.  Updates to that local state are handled by the **addMessage** and **clearMessages** methods.  We would like you to convert this over to the Redux global store.  Convert the methods to actions and add a new reducer called `messages` and connect them to the components that need access to that data/functionality.  
+- [ ] Currently messages are being stored in local state in the `App` component.  Updates to that local state are handled by the **addMessage** and **clearMessages** methods.  We would like you to convert this over to the Redux global store.  Convert the methods to actions and add a new reducer called `messages` and connect them to the components that need access to that data/functionality.  
 
 ### Iteration 3
 
-After successfully implementing your messages into Redux, write the tests for your new actions and `messages` reducer.  We have not created test files for actions and reducers yet, so please add them in.  Any changes you have made to containers, specifically with `mapStateToProps` and `mapDispatchToProps`, should also have updated tests. (some tests might already exist but need an update, others you might need to create)
+- [ ] After successfully implementing your messages into Redux, write the tests for your new actions and `messages` reducer.  We have not created test files for actions and reducers yet, so please add them in.  Any changes you have made to containers, specifically with `mapStateToProps` and `mapDispatchToProps`, should also have updated tests. (some tests might already exist but need an update, others you might need to create)
 
 ### Iteration 4
 
-Currently if you try to respond back to Dr Watson after his initial response, an error shows up saying "Cannot read property 'message' of undefined".  This is because the *postMessage* function in your `apiCalls` hasn't been completed.  Using the docs below, implement the fetch.  You should get a response back with a message object if the fetch is successful.  Return the message object in order to fix the error.
+- [ ] Currently if you try to respond back to Dr Watson after his initial response, an error shows up saying "Cannot read property 'message' of undefined".  This is because the *postMessage* function in your `apiCalls` hasn't been completed.  Using the docs below, implement the fetch.  You should get a response back with a message object if the fetch is successful.  Return the message object in order to fix the error.
 
 ### Iteration 5
 
-Let's continue to stick with our BDD process (Behavioral Driven Development) and now write our tests for our *postMessage* apiCall.  Add in a test that tests what url the fetch calls and incorporate happy and sad path tests.  You should be writing a total of 4 tests for the *postMessage* in order to test it fully. 
+- [ ] Let's continue to stick with our BDD process (Behavioral Driven Development) and now write our tests for our *postMessage* apiCall.  Add in a test that tests what url the fetch calls and incorporate happy and sad path tests.  You should be writing a total of 4 tests for the *postMessage* in order to test it fully. 
 
 
 ### Endpoints
